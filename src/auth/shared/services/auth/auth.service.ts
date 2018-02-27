@@ -34,6 +34,10 @@ auth$ = this.af.authState
     private af: AngularFireAuth
   ) {}
 
+  get authState() {
+    return this.af.authState;
+  }
+
   createUser(email: string, password: string) {
     return this.af.auth
       .createUserWithEmailAndPassword(email, password);
@@ -42,5 +46,9 @@ auth$ = this.af.authState
   loginUser(email: string, password: string) {
     return this.af.auth
       .signInWithEmailAndPassword(email, password);
+  }
+
+  logoutUser() {
+    return this.af.auth.signOut();
   }
 }
